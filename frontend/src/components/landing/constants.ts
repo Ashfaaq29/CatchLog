@@ -1,0 +1,10 @@
+/** Local hero from stitch_angler_catch_manager (1)/screen.png (cropped) */
+export const LANDING_IMAGES = {
+  hero: '/images/landing-hero.png',
+  profile:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuATZbVV6MduonWLgsAgqvSarANOdWMk_FY_LDWIIi7vuNhBFgKmkiDZGzCqgAd4C22GEcOZwT9arhj4tS24cje4eHIiJoMGL5jubDwFJiTV-06KSe6GRVP0_AtM9jBjBa38RL6t_VzdDVj_Yq2JgaqtKf6D-1ajPSIdhUo4FWzdcYfxhRbWFT9nnHAEb_OOoi1zJZBjXVJC_y4K-m3Qbrqhrt_e4BXLlGxWCKWMJGwymfv8mz1UzoPE9f0aKNUQbIRJ6WDB8CB2-av7',
+  feedYellowfin:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBMGRPQI2mrYmWjm4m1zz4Dr3BN-k_U9xfm_fd-8Jkiy7BMVX3s613VNK01bBO609nhLMYiUbxgEnqS3S6LhP9TpaQjjLRxDopQVUmPQ93e1hsfJ9PDpyyrPknJI7h6HD_OTMp2Lsi6tRfxpTZcCpbA_iHQc-yeMC3fpvh-t-Jrkl66snVXNLqK7aGvDof8r5EjB-_4PaGAXWbqpPlQBevh84eoTmck8BScDh-adlgXINhztRWA9ywcui9h882EjzA1jbdgYqf3_gz5',
+  feedMarlin:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuBxiM6poqcBhCjHbHqpFhotXzgOV-NxwrnQP_qzTJi3yYfeMoRMLqNHUptSjHBTM8Ea6Picv_NZPAi1dQetcogu2Mos_T1en74Neg1qwXpeFE0XR6_aGGaIPdEfgnP7v34jPQxE9UrowZ6FNnwNIiuB_aU0kse1EoBarWZCjlqXfoLTuCJiWR7JzxkpUNrHf8L-ZIIoTaOV0yohU2EssbQpLefFCdHFiB68iBfco1QrG8sKvITEqC6rThGN86JlIE1qflGIMx54LeIL',
+} as const;
