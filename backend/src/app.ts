@@ -2,7 +2,6 @@ import express, { type Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import path from 'path';
 import { env } from './config/env';
 import apiRouter from './routes';
 import { requestIdMiddleware } from './middlewares/logger.middleware';
@@ -32,13 +31,6 @@ export function createApp(): Application {
   app.get('/healthz', (_req, res) => {
     res.json({ status: 'ok', service: 'catchlog-api', timestamp: new Date().toISOString() });
   });
-
-  app.use(
-    '/uploads',
-    express.static(path.join(process.cwd(), 'uploads'), {
-      maxAge: env.nodeEnv === 'production' ? '7d' : 0,
-    }),
-  );
 
   app.use('/api', apiRouter);
 

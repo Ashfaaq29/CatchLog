@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 import { Trip, type TripDoc } from '../models/Trip';
 import { Catch } from '../models/Catch';
 import { AppError } from '../utils/AppError';
-import { deleteObject } from './upload.service';
+import { deleteFromS3 } from './upload.service';
 import { geocodeLocation } from './openmeteo.client';
 import { loadOwnedPlace } from './place.service';
 import type { CreateTripInput, UpdateTripCoordsInput, UpdateTripInput } from '../utils/validators';
@@ -184,7 +184,7 @@ export async function deleteTrip(userId: string, tripId: string): Promise<void> 
 
   const catches = await Catch.find({ trip: trip._id });
   await Promise.all(
-    catches.map((c) => (c.imageKey ? deleteObject(c.imageKey) : Promise.resolve())),
+    catches.map((c) => (c.imageKey ? deleteFromS3(c.imageKey) : Promise.resolve())),
   );
   await Catch.deleteMany({ trip: trip._id });
   await trip.deleteOne();

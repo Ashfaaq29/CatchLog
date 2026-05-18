@@ -60,9 +60,3 @@ export const s3Configured =
   isRealAwsCredential(env.aws.accessKeyId) &&
   isRealAwsCredential(env.aws.secretAccessKey) &&
   isRealAwsCredential(env.aws.s3Bucket);
-
-/** Base URL for locally stored uploads (defaults to this API origin). */
-export const publicBaseUrl = optional(
-  'PUBLIC_BASE_URL',
-  `http://localhost:${optional('PORT', '5000')}`,
-);

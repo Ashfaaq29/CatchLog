@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 import { Catch, type CatchDoc } from '../models/Catch';
 import { Trip } from '../models/Trip';
 import { AppError } from '../utils/AppError';
-import { deleteObject, uploadBuffer } from './upload.service';
+import { deleteFromS3, uploadToS3 } from './upload.service';
 import { loadOwnedTrip } from './trip.service';
 import type { CreateCatchInput, PaginationInput, UpdateCatchInput } from '../utils/validators';
 
@@ -54,7 +54,7 @@ export async function createCatch(opts: CreateCatchOptions): Promise<CatchDTO> {
   let imageUrl: string | undefined;
   let imageKey: string | undefined;
   if (opts.file) {
-    const uploaded = await uploadBuffer({
+    const uploaded = await uploadToS3({
       buffer: opts.file.buffer,
       mimeType: opts.file.mimetype,
       originalName: opts.file.originalname,
@@ -100,14 +100,14 @@ export async function updateCatch(opts: UpdateCatchOptions): Promise<CatchDTO> {
   if (input.notes !== undefined) c.notes = input.notes;
 
   if (input.removeImage && c.imageKey) {
-    await deleteObject(c.imageKey);
+    await deleteFromS3(c.imageKey);
     c.imageUrl = undefined;
     c.imageKey = undefined;
   }
 
   if (file) {
-    if (c.imageKey) await deleteObject(c.imageKey);
-    const uploaded = await uploadBuffer({
+    if (c.imageKey) await deleteFromS3(c.imageKey);
+    const uploaded = await uploadToS3({
       buffer: file.buffer,
       mimeType: file.mimetype,
       originalName: file.originalname,
@@ -130,7 +130,7 @@ export async function deleteCatch(userId: string, catchId: string): Promise<void
   const c = await Catch.findById(catchId);
   if (!c) throw AppError.notFound('Catch not found');
   if (c.user.toString() !== userId) throw AppError.forbidden('You do not own this catch');
-  if (c.imageKey) await deleteObject(c.imageKey);
+  if (c.imageKey) await deleteFromS3(c.imageKey);
   await c.deleteOne();
 }
 
