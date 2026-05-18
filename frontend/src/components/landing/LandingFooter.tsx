@@ -4,9 +4,9 @@ import { useSmoothAnchorScroll } from './useSmoothAnchorScroll';
 
 const FOOTER_LINKS = {
   operations: [
-    { label: 'Tactical Feed', href: '#/', id: 'tactical-feed' },
-    { label: 'Offshore Chart', href: '#/', id: 'offshore-modules' },
-    { label: 'Tidal Forecast', href: '#/', id: 'offshore-modules' },
+    { label: 'Tactical Feed', href: '#tactical-feed', id: 'tactical-feed' },
+    { label: 'Offshore Chart', href: '#offshore-modules', id: 'offshore-modules' },
+    { label: 'Tidal Forecast', href: '#offshore-modules', id: 'offshore-modules' },
   ],
   resources: [
     { label: 'Manuals', href: '#' },

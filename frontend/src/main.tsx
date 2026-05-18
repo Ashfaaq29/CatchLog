@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import App from './App';
 import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <App />
       <Toaster
         position="top-right"
@@ -25,6 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           error: { iconTheme: { primary: '#ffb4ab', secondary: '#690005' } },
         }}
       />
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
 );

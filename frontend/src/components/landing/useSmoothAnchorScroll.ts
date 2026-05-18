@@ -6,5 +6,6 @@ export function useSmoothAnchorScroll(): (e: React.MouseEvent<HTMLAnchorElement>
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.history.replaceState(null, '', `#${id}`);
   }, []);
 }
