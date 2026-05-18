@@ -32,6 +32,10 @@ export function createApp(): Application {
     res.json({ status: 'ok', service: 'catchlog-api', timestamp: new Date().toISOString() });
   });
 
+  app.get('/api/test', (_req, res) => {
+    res.json({ status: 'ok', message: 'API is working' });
+  });
+
   app.use('/api', apiRouter);
 
   app.use(notFoundHandler);
