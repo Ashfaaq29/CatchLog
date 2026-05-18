@@ -35,10 +35,10 @@ api.interceptors.response.use(
   (res) => res,
   (error: AxiosError<{ error?: { message?: string; code?: string } }>) => {
     if (error.response?.status === 401) {
-      const path = window.location.pathname;
+      const path = window.location.hash.replace(/^#/, '') || '/';
       if (path !== '/login' && path !== '/register') {
         useAuthStore.getState().logout();
-        window.location.assign('/login');
+        window.location.hash = '#/login';
       }
     }
     return Promise.reject(error);

@@ -58,21 +58,21 @@ export function LandingNav(): JSX.Element {
         </Link>
         <div className="hidden md:flex items-center ml-xl gap-lg">
           <a
-            href="#tactical-feed"
+            href="#/"
             onClick={(e) => scrollTo(e, 'tactical-feed')}
             className={navLinkClass('tactical-feed')}
           >
             Tactical Feed
           </a>
           <a
-            href="#offshore-modules"
+            href="#/"
             onClick={(e) => scrollTo(e, 'offshore-modules')}
             className={navLinkClass('offshore-modules')}
           >
             Logbook
           </a>
           <a
-            href="#offshore-modules"
+            href="#/"
             onClick={(e) => scrollTo(e, 'offshore-modules')}
             className={navLinkClass('offshore-modules')}
           >
