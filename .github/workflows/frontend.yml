@@ -20,6 +20,15 @@ jobs:
       - name: Install dependencies
         run: cd frontend && npm install
 
+      - name: Require VITE_API_URL secret
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        run: |
+          if [ -z "$VITE_API_URL" ]; then
+            echo "::error::Set repository secret VITE_API_URL (e.g. http://51.20.7.80:5000/api)"
+            exit 1
+          fi
+
       - name: Build frontend
         run: cd frontend && npm run build
         env:

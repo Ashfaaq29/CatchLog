@@ -1,7 +1,22 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '../context/authStore';
 
-const baseURL = import.meta.env.VITE_API_URL ;
+/** Backend `/api` root, e.g. `http://51.20.7.80:5000/api` — baked in at `vite build`. */
+function resolveApiBaseUrl(): string {
+  const raw = import.meta.env.VITE_API_URL?.trim() ?? '';
+  if (!raw) {
+    const msg =
+      'VITE_API_URL is not set. Set GitHub secret VITE_API_URL (e.g. http://51.20.7.80:5000/api) and rebuild.';
+    if (import.meta.env.PROD) {
+      throw new Error(msg);
+    }
+    console.warn(`[api] ${msg} Requests will hit the frontend host (S3) and 404.`);
+    return '';
+  }
+  return raw.replace(/\/+$/, '');
+}
+
+const baseURL = resolveApiBaseUrl();
 
 export const api = axios.create({
   baseURL,
